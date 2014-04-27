@@ -1,0 +1,57 @@
+/*
+ * rc.h
+ *
+ *  Created on: Apr 21, 2014
+ *      Author: Krithika
+ */
+
+#ifndef RC_H_
+#define RC_H_
+
+
+
+/*
+ * rc.cpp
+ *
+ *  Created on: Apr 21, 2014
+ *      Author: Krithika
+ */
+
+
+/*
+ * reqdclss.h
+ *
+ *  Created on: Apr 21, 2014
+ *      Author: Krithika
+ */
+
+#include<string>
+#include<iostream>
+using namespace std;
+class Item
+{
+public:
+    int barcode;
+	string name;
+	float weight;
+	string status;
+	time_t Timer;
+	int rfid;
+
+	virtual void weightupdate(float)=0;
+	virtual void statusupdate()=0;
+	virtual void Timerupdate()=0;
+	virtual void objectdetect ()=0;
+	virtual void getbarcode()=0;
+	virtual string getname()=0;
+	virtual void getweight()=0;
+	virtual void display()=0;
+	virtual void getrfid()=0;
+
+};
+
+
+
+
+
+#endif /* RC_H_ */

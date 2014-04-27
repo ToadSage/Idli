@@ -3,6 +3,10 @@
  *
  *  Created on: Apr 26, 2014
  *      Author: Srinivasan
+ *      For the code to run you will need to
+ *      install zlib
+ *      add the path to its header files, library libzbar-0,
+ *      update the environment path to include the bin folder containing libzbar-0.dll
  */
 
 
@@ -28,9 +32,10 @@ string getBarcode(string s){
 	cvtColor(frame,greyScale,CV_GRAY2RGB);
 
 	/*get the width and height information*/
-	int width 			= frame.cols;
-	int height 			= frame.rows;
+	int width 				= frame.cols;
+	int height 				= frame.rows;
 	unsigned char *data 	= frame.data;
+
 	/*Image scanner only supports Y800format, that is 8bpp grayscale format*/
 	/*Wrap the raw image date into Image object provided by zlib*/
 

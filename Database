@@ -7,6 +7,7 @@
  */
 
 
+#include "rc.h"
 #include<iostream>
 #include<stdio.h>
 #include <string>
@@ -18,21 +19,10 @@
 #include<thread>
 
 
-
 using namespace std;
-class Item
+class Grocery:public Item
 {
-
-    int barcode;
-	string name;
-	float weight;
-	string status;
-
-
-
 public:
-time_t Timer;
-int rfid;
 
 void weightupdate(float wt)
 {
@@ -90,17 +80,17 @@ void display()
 }
 
 };
-queue <Item> available;
-void add(Item);
+queue <Grocery> available;
+void add(Grocery);
 void find(int);
 void update(int,float);
 
-map <int,Item> mymap;
-map <int, Item> :: iterator it;
+map <int,Grocery> mymap;
+map <int, Grocery> :: iterator it;
 
 void mainthread()
 {
-	Item item;
+	Grocery Grocery;
 	int choice, rfout,temp_weight;
    while(1)
     {
@@ -114,21 +104,21 @@ void mainthread()
 		switch(choice)
 		{
 		case 1:
-			cout<<"enter the details of item"<<endl;
-					item.getbarcode();
-					item.getrfid();
-					item.getweight();
-					item.objectdetect();
-					add(item);
+			cout<<"enter the details of Grocery"<<endl;
+					Grocery.getbarcode();
+					Grocery.getrfid();
+					Grocery.getweight();
+					Grocery.objectdetect();
+					add(Grocery);
 					break;
 		case 2:
-			cout<<"which item do u want to take out"<<endl;
+			cout<<"which Grocery do u want to take out"<<endl;
 			cin>>rfout;
 			find(rfout);
 			break;
 
 		case 3:
-			cout<<"which item do u want to put in"<<endl;
+			cout<<"which Grocery do u want to put in"<<endl;
 			cin>>rfout;
 			cout<<"what is the weight now"<<endl;
 			cin>>temp_weight;
@@ -169,7 +159,7 @@ int main()
 }
 
 
-void add(Item stuff)
+void add(Grocery stuff)
 {
 	static int i=0;
 	char c;
@@ -191,7 +181,7 @@ void add(Item stuff)
 					break;
 				}
 		}
-	mymap.insert ( std::pair<int,Item>(i,stuff) );
+	mymap.insert ( std::pair<int,Grocery>(i,stuff) );
 	i++;
 }
 

@@ -3,10 +3,6 @@
  *
  *  Created on: Apr 26, 2014
  *      Author: Srinivasan
- *      For the code to run you will need to
- *      install zlib
- *      add the path to its header files, library libzbar-0,
- *      update the environment path to include the bin folder containing libzbar-0.dll
  */
 
 
@@ -35,7 +31,6 @@ string getBarcode(string s){
 	int width 				= frame.cols;
 	int height 				= frame.rows;
 	unsigned char *data 	= frame.data;
-
 	/*Image scanner only supports Y800format, that is 8bpp grayscale format*/
 	/*Wrap the raw image date into Image object provided by zlib*/
 
@@ -43,13 +38,9 @@ string getBarcode(string s){
 	// scan the image for barcode, if no barcode is found outputs an empty string and a warning
 	if (scanner.scan(image)){
 
-		// extract results
-		for(Image::SymbolIterator symbol = image.symbol_begin();
-				symbol != image.symbol_end();
-				++symbol) {
-
-			RetString =  symbol->get_data();
-		}
+		// extract barcode
+		Image::SymbolIterator symbol = image.symbol_begin();
+		RetString =  symbol->get_data();
 		// clean up data
 		image.set_data(NULL, 0);
 	}

@@ -20,52 +20,52 @@
 
 
 using namespace std;
-class Grocery:public Item
-{
-public:
+//class Item
+//{
+//public:
 
-void weightupdate(float wt)
+void Item::weightupdate(float wt)
 {
 	status="back in";
 	weight=wt;
 	Timer=0;
 }
-void statusupdate()
+void Item::statusupdate()
 {
 	status="gone out";
 	time(&Timer);
 
 }
-void Timerupdate()
+void Item::Timerupdate()
 {
 	status="deleted";
 }
-void getrfid()
+void Item:: getrfid()
 {
 cout<<"Enter rfid"<<endl;
 cin>>rfid;
 }
-void objectdetect ()
+void Item::objectdetect ()
 {
 cout<<"Enter object name"<<endl;
 cin>>name;
 }
-void getbarcode()
+void Item::getbarcode()
 {
 	cout<<"Enter barcode"<<endl;
 cin>>barcode;
 }
-string getname()
+string Item::getname()
 {
 	return name;
 }
-void getweight()
+void Item::getweight()
 {
 cout<<"enter the weight"<<endl;
 cin>>weight;
 }
 
-void display()
+void Item::display()
 {
 	  double diff;
 
@@ -74,23 +74,23 @@ void display()
                 cout<<weight<<endl;
                 cout<<name<<endl;
                 cout<<Timer<<endl;
-            /*   cout<<clock()<<"	what's up"<<endl;
-                diff = ( std::clock() - Timer ) / (double)CLOCKS_PER_SEC;
-                cout<<diff<<"time elapsed"<<endl;*/
+            //   cout<<clock()<<"	what's up"<<endl;
+              //  diff = ( std::clock() - Timer ) / (double)CLOCKS_PER_SEC;
+                //cout<<diff<<"time elapsed"<<endl;
 }
 
-};
-queue <Grocery> available;
-void add(Grocery);
+//};
+queue <Item> available;
+void add(Item);
 void find(int);
 void update(int,float);
 
-map <int,Grocery> mymap;
-map <int, Grocery> :: iterator it;
+map <int,Item> mymap;
+map <int, Item> :: iterator it;
 
 void mainthread()
 {
-	Grocery Grocery;
+	Item Item;
 	int choice, rfout,temp_weight;
    while(1)
     {
@@ -104,12 +104,12 @@ void mainthread()
 		switch(choice)
 		{
 		case 1:
-			cout<<"enter the details of Grocery"<<endl;
-					Grocery.getbarcode();
-					Grocery.getrfid();
-					Grocery.getweight();
-					Grocery.objectdetect();
-					add(Grocery);
+			cout<<"enter the details of Item"<<endl;
+					Item.getbarcode();
+					Item.getrfid();
+					Item.getweight();
+					Item.objectdetect();
+					add(Item);
 					break;
 		case 2:
 			cout<<"which Grocery do u want to take out"<<endl;
@@ -159,7 +159,7 @@ int main()
 }
 
 
-void add(Grocery stuff)
+void add(Item stuff)
 {
 	static int i=0;
 	char c;
@@ -181,7 +181,8 @@ void add(Grocery stuff)
 					break;
 				}
 		}
-	mymap.insert ( std::pair<int,Grocery>(i,stuff) );
+	//mymap.insert ( std::pair<int,Item> (i,stuff) );
+		mymap[i]=stuff;
 	i++;
 }
 

@@ -38,15 +38,15 @@ public:
 	time_t Timer;
 	int rfid;
 
-	virtual void weightupdate(float)=0;
-	virtual void statusupdate()=0;
-	virtual void Timerupdate()=0;
-	virtual void objectdetect ()=0;
-	virtual void getbarcode()=0;
-	virtual string getname()=0;
-	virtual void getweight()=0;
-	virtual void display()=0;
-	virtual void getrfid()=0;
+	virtual void weightupdate(float);
+	virtual void statusupdate();
+	virtual void Timerupdate();
+	virtual void objectdetect();
+	virtual void getbarcode();
+	virtual string getname();
+	virtual void getweight();
+	virtual void display();
+	virtual void getrfid();
 
 };
 

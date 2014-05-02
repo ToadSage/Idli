@@ -66,14 +66,6 @@ public:
 				type 			= objList.typeList[2];
 				ClassifierFile 	= "./salt.xml";
 			}
-			else if(tp == "salt"){
-				scaleFactor 	= 1.5;
-				minNeighbors 	= 4;
-				flag 			= 0;
-				minSize 		= Size(40,200);
-				type 			= objList.typeList[2];
-				ClassifierFile 	= "./salt.xml";
-			}
 			else if(tp == "apple"){
 				scaleFactor 	= 1.3;
 				minNeighbors 	= 4;

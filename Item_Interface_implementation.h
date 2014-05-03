@@ -52,8 +52,8 @@ cin>>rfid;
 void Item_Interface::objectdetect ()
 {
 cout<<"Enter object name"<<endl;
-cin>>name;
-detectAndDisplay();				//////HERE ONLY GIVE INPUT
+//cin>>name;
+name=detectAndDisplay();				//////HERE ONLY GIVE INPUT
 }
 void Item_Interface::getbarcode()
 {

@@ -1,9 +1,3 @@
-/*
- * databaseImplement.cpp
- *
- *  Created on: May 4, 2014
- *      Author: Srinivasan
- */
 
 #include <databaseImplement.h>
 using std::cout;
@@ -19,6 +13,7 @@ void database:: add(itemInfo stuff)
 			if(it->second.rfid==stuff.rfid)
 				cout<<"RFID Exists do u want to rem-ove "<<it->second.getname()<<"from the list (Y OR N)";
 				cin>>c;
+		
 				switch(c)
 				{
 				case 'Y':

@@ -1,13 +1,21 @@
 /*
+ * ObjectDetect.h
+ *
+ *  Created on: May 4, 2014
+ *      Author: Srinivasan
+ */
+
+#ifndef OBJECTHAARPARAMS_H_
+#define OBJECTHAARPARAMS_H_
+
+/*
  * Objectdetect.h
  *
  *  Created on: May 2, 2014
  *      Author: Krithika
  */
 
-
-
-#include <ItemList_Interface.h>
+#include <objectList.h>
 #include <cv.h>
 #include <highgui.h>
 #include <stdio.h>
@@ -18,7 +26,8 @@ using namespace std;
 #include <iostream>
 #include <string.h>
 
-class Item_detect_interface{
+class objectHaarParam
+{
 public:
 	double scaleFactor;
 	int minNeighbors;
@@ -26,9 +35,15 @@ public:
 	Size minSize;
 	string type;
 	string ClassifierFile;
-	ItemList_Interface objList;
-	Item_detect_interface ();
-	Item_detect_interface (string tp);
-	Item_detect_interface(string tp, string fileName);
+	objectList objList;
+
+	objectHaarParam ();
+	objectHaarParam (string);
+	objectHaarParam (string , string );
 };
- 
+
+
+
+
+#endif /* OBJECTHAARPARAMS_H_ */
+

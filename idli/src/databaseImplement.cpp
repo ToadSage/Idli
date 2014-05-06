@@ -6,7 +6,7 @@ using std::endl;
 
 void database:: add(itemInfo stuff)
 {
-	map<int, itemInfo> :: iterator it;
+	map<string, itemInfo> :: iterator it;
 	static int i=0;
 	char c;
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
@@ -29,14 +29,14 @@ void database:: add(itemInfo stuff)
 				}
 		}
 	//mymap.insert ( std::pair<int,itemInfo> (i,stuff) );
-		mymap[i]=stuff;
-	i++;
+		mymap[stuff.rfid]=stuff;
+	
 	cout << "data successfully added!" <<endl;
 }
 
-void database :: find(int rfid)
+void database :: find(string rfid)
 {
-	map<int, itemInfo> :: iterator it;
+	map<string, itemInfo> :: iterator it;
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
 	{
 		if(it->second.rfid==rfid)
@@ -45,9 +45,9 @@ void database :: find(int rfid)
 }
 
 
-void database :: update(int rfid, float weight)
+void database :: update(string rfid, float weight)
 {
-	map<int, itemInfo> :: iterator it;
+	map<string, itemInfo> :: iterator it;
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
 		{
 			if(it->second.rfid==rfid)

@@ -14,7 +14,7 @@ class database
 {
 public:
 	 
-	 	map <int, itemInfo> mymap;
+	 	map <unsigned long int, itemInfo> mymap;
        	        void add(itemInfo);
 	        void find(int);
 	        void update(int , float );

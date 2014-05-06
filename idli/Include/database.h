@@ -13,9 +13,11 @@ using  std::map;
 class database
 {
 public:
-	 void add(itemInfo);
-	 void find(int);
-	 void update(int , float );
+	 
+	 	map <int, itemInfo> mymap;
+       	        void add(itemInfo);
+	        void find(int);
+	        void update(int , float );
 };
 
 

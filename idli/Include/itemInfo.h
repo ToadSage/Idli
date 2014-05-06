@@ -19,7 +19,7 @@ public:
 	float weight;
 	string status;
 	time_t Timer;
-	unsigned long int rfid;
+	string rfid;
 
 	 void weightupdate(float);
 	 void statusupdate();

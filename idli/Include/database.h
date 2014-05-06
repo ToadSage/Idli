@@ -13,8 +13,6 @@ using  std::map;
 class database
 {
 public:
-	map <int, itemInfo> mymap;
-	map <int, itemInfo> :: iterator it;
 	 void add(itemInfo);
 	 void find(int);
 	 void update(int , float );

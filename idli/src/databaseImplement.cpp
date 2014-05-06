@@ -6,10 +6,11 @@ using std::endl;
 
 void database:: add(itemInfo stuff)
 {
+	fstream myfile;
 	map<string, itemInfo> :: iterator it;
 	static int i=0;
 	char c;
-	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		for (it=mymap.begin(); it!=mymap.end(); ++it)
 		{
 			if(it->second.rfid==stuff.rfid)
 			{
@@ -31,8 +32,13 @@ void database:: add(itemInfo stuff)
 			}
 		}
 	//mymap.insert ( std::pair<int,itemInfo> (i,stuff) );
-		mymap[stuff.rfid]=stuff;
-	
+	mymap[stuff.rfid]=stuff;
+	      	fout.open("filename.txt", ios::app)
+	for (it=mymap.begin(); it!=mymap.end(); ++it)
+		{
+		fout<<it->second.name<<"  "<<it->second.weight<<"  "<<it->second.status<<"  "	<<it->second.rfid<<endl;
+		}
+	fout.close();
 	cout << "data successfully added!" <<endl;
 }
 

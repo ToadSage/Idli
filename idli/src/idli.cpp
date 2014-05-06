@@ -45,8 +45,9 @@ int main(int argc, const char** argv ) {
 			data.update(rfout,temp_weight);
 			break;
 		case 4:
-			for (data.it=data.mymap.begin(); data.it!=data.mymap.end(); ++data.it)
-				data.it->second.display();
+				map<string, itemInfo> :: iterator it;
+			for (it=data.mymap.begin(); it!=data.mymap.end(); ++it)
+				it->second.display();
 			break;
 
 		default:

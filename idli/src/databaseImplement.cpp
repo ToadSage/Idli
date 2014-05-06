@@ -12,6 +12,7 @@ void database:: add(itemInfo stuff)
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
 		{
 			if(it->second.rfid==stuff.rfid)
+			{
 				cout<<"RFID Exists do u want to rem-ove "<<it->second.getname()<<"from the list (Y OR N)";
 				cin>>c;
 		
@@ -27,6 +28,7 @@ void database:: add(itemInfo stuff)
 					add(stuff);
 					break;
 				}
+			}
 		}
 	//mymap.insert ( std::pair<int,itemInfo> (i,stuff) );
 		mymap[stuff.rfid]=stuff;

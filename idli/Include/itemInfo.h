@@ -1,15 +1,8 @@
-/*
- * ItemInfo.h
- *
- *  Created on: May 4, 2014
- *      Author: Srinivasan
- */
-
 #ifndef ITEMINFO_H_
 #define ITEMINFO_H_
 
 #include<iostream>
-using  std::string;
+using  namespace std;
 
 class itemInfo
 {
@@ -30,6 +23,5 @@ public:
 	 void getweight();
 	 void display();
 	 void getrfid();
-
 };
 #endif /* ITEMINFO_H_ */

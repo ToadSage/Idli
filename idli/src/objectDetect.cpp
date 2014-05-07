@@ -1,25 +1,17 @@
-/*
-
- * ObjectDetect.cpp
- *
- *  Created on: May 4, 2014
- *      Author: Srinivasan
-*/
-
 #include <ObjectDetect.h>
 #include <cv.h>
 #include <highgui.h>
 #include <stdio.h>
 #include "opencv2\opencv.hpp"
-using namespace cv;
-
-using namespace std;
 #include <iostream>
 #include <string.h>
 
+using namespace cv;
+using namespace std;
 
 
-	int detectAndDisplay( string inputImage, bool Cameracapture ,string *Itemname)
+
+	int detectAndDisplay( string inputImage, bool cameraCapture ,string *itemName)
 	{
 
 		CascadeClassifier cascade;
@@ -37,7 +29,7 @@ using namespace std;
 		decidedObj.x = 0;
 		decidedObj.y = 0;
 		//-- 2. Read the video stream
-		if (Cameracapture)
+		if (cameraCapture)
 		{
 			capture = cvCaptureFromCAM( -1 );
 			if( capture )
@@ -128,7 +120,7 @@ using namespace std;
 				waitKey(0);
 				count++;
 			}
-			*Itemname = decidedType;
+			*itemName = decidedType;
 			return 1;
 
 		}

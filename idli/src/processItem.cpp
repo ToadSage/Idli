@@ -1,13 +1,6 @@
-/*
- * processItem.cpp
- *
- *  Created on: May 4, 2014
- *      Author: Srinivasan
- */
 #include <processItem.h>
-using std::cin;
-using std::cout;
-using std::endl;
+
+using namespace std;
 
 void itemInfo::weightupdate(float wt)
 {

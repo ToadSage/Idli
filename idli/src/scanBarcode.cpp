@@ -1,49 +1,46 @@
-/*
- * barcodeScanner.cpp
- *
- *  Created on: Apr 26, 2014
- *      Author: Srinivasan
- */
-
-
 #include <cstddef>
+#include <iostream>
 #include "zbar.h"
 #include "cv.h"
 #include "highgui.h"
-#include <iostream>
+
 using namespace std;
 using namespace zbar;
 using namespace cv;
-string scanBarcode(string s){
 
-	/*Init scanner to scan barcodes*/
+string scanBarcode(string location){
+
+	/* Initialise the Scanner to scan barcodes. */
 	ImageScanner scanner;
 	scanner.set_config(ZBAR_NONE, ZBAR_CFG_ENABLE, 1);
 	string RetString;
-	/*load image*/
-	Mat frame = imread(s,0);
+    
+	/* Load the image. */
+	Mat frame = imread(location,0);
 	if(!frame.empty())
 	{
-		/*convert the image to grey  scale*/
-		Mat greyScale;
-		cvtColor(frame,greyScale,CV_GRAY2RGB);
+		/* Convert the input image to gray scale*/
+		Mat grayScale;
+		cvtColor(frame,grayScale,CV_GRAY2RGB);
 
-		/*get the width and height information*/
+		/* Get the width and height of the image. */
 		int width 			= frame.cols;
 		int height 			= frame.rows;
-		unsigned char *data 	= frame.data;
-		/*Image scanner only supports Y800format, that is 8bpp grayscale format*/
-		/*Wrap the raw image date into Image object provided by zlib*/
+		unsigned char *data = frame.data;
+		
+        /* The Image Scanner only supports Y800 format, that is 8bpp Grayscale format. */
+		/*Wrap the raw image data into an Image object provided by zlib*/
+		Image image(width, height, "Y800", data, width * height);
 
-		Image image(width, height, "Y800",data, width * height);
-		// scan the image for barcode, if no barcode is found outputs an empty string and a warning
-		if (scanner.scan(image)){
-
-			// extract barcode
+		/* The functoin scans the image for a barcode, and returns an empty string and a warning message if the barcode is not found. */
+		if (scanner.scan(image))
+        {
+			/* Extract the barcode */
 			Image::SymbolIterator symbol = image.symbol_begin();
 			RetString =  symbol->get_data();
-			// clean up data
-			image.set_data(NULL, 0);
+            
+            /* Clean up the image after it has been scanned. */
+            image.set_data(NULL, 0);
 		}
 		else
 		{
@@ -51,8 +48,7 @@ string scanBarcode(string s){
 		}
 	}
 	else
-		cout << "no image found!\n" << endl;
+		cout << "No image found!\n" << endl;
 
 	return RetString;
-
 }

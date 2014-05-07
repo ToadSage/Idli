@@ -1,51 +1,51 @@
-
 #include <databaseImplement.h>
-using std::cout;
-using std::cin;
-using std::endl;
 
-void database:: add(itemInfo stuff)
+using namespace std;
+
+void database:: add(itemInfo grocery)
 {
-	fstream myfile;
+	ofstream myFile;
 	map<string, itemInfo> :: iterator it;
 	static int i=0;
-	char c;
-		for (it=mymap.begin(); it!=mymap.end(); ++it)
-		{
-			if(it->second.rfid==stuff.rfid)
-			{
-				cout<<"RFID Exists do u want to rem-ove "<<it->second.getname()<<"from the list (Y OR N)";
-				cin>>c;
-		
-				switch(c)
-				{
+	char choice;
+    
+    for (it=myMap.begin(); it!=myMap.end(); ++it)
+    {
+        if(it->second.rfid==grocery.rfid)
+        {
+            cout<<"This RFID already exists in your database. Do u want to remove " << it->second.getname() <<" from the list." << endl << "(Y OR N)";
+            cin>>choice;
+            
+            switch(choice)
+            {
 				case 'Y':
 					it->second.Timerupdate();
-					mymap.erase(it);
+					myMap.erase(it);
 					break;
 				case 'N':
-					cout<<"try another rfid";
-					cin>>stuff.rfid;
-					add(stuff);
+					cout<<"Try with another RFID tag.";
+					cin >> grocery.rfid;
+					add(grocery);
 					break;
-				}
-			}
-		}
-	//mymap.insert ( std::pair<int,itemInfo> (i,stuff) );
-	mymap[stuff.rfid]=stuff;
-	      	fout.open("filename.txt", ios::app)
-	for (it=mymap.begin(); it!=mymap.end(); ++it)
-		{
-		fout<<it->second.name<<"  "<<it->second.weight<<"  "<<it->second.status<<"  "	<<it->second.rfid<<endl;
-		}
-	fout.close();
-	cout << "data successfully added!" <<endl;
+            }
+        }
+    }
+    
+    
+	myMap[grocery.rfid]=grocery;
+    myFile.open("theList.txt", ios::trunc);
+	for (it=myMap.begin(); it!=myMap.end(); ++it)
+    {
+		myFile<<it->second.name<<"  "<<it->second.weight<<"  "<<it->second.status<<"  "	<<it->second.rfid<<endl;
+    }
+	myFile.close();
+	cout << "Data successfully added!" <<endl;
 }
 
 void database :: find(string rfid)
 {
 	map<string, itemInfo> :: iterator it;
-	for (it=mymap.begin(); it!=mymap.end(); ++it)
+	for (it=myMap.begin(); it!=myMap.end(); ++it)
 	{
 		if(it->second.rfid==rfid)
 			it->second.statusupdate();
@@ -56,12 +56,12 @@ void database :: find(string rfid)
 void database :: update(string rfid, float weight)
 {
 	map<string, itemInfo> :: iterator it;
-	for (it=mymap.begin(); it!=mymap.end(); ++it)
-		{
-			if(it->second.rfid==rfid)
-				it->second.weightupdate(weight);
-		}
-
+	for (it=myMap.begin(); it!=myMap.end(); ++it)
+    {
+        if(it->second.rfid==rfid)
+            it->second.weightupdate(weight);
+    }
+    
 }
 
 

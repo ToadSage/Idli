@@ -1,10 +1,3 @@
-/*
- * ObjectList.h
- *
- *  Created on: May 4, 2014
- *      Author: Srinivasan
- */
-
 #ifndef OBJECTLIST_H_
 #define OBJECTLIST_H_
 

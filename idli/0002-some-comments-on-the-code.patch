@@ -1,0 +1,165 @@
+From 24e2f65481d779e4ac92c5b776ee7a9a3ff1b604 Mon Sep 17 00:00:00 2001
+From: ernie cohen <ernie.cohen@acm.org>
+Date: Fri, 9 May 2014 19:09:25 -0400
+Subject: [PATCH 2/2] some comments on the code
+
+---
+ idli/Include/ImageScanner.h      | 14 +++++++++++---
+ idli/Include/database.h          |  2 ++
+ idli/Include/databaseImplement.h |  2 +-
+ idli/Include/itemInfo.h          |  3 ++-
+ idli/Include/objectHaarParams.h  |  4 +++-
+ idli/Include/objectList.h        |  2 ++
+ idli/Include/rfid_detector.h     |  2 ++
+ idli/Include/scanBarcode.h       |  2 +-
+ 8 files changed, 24 insertions(+), 7 deletions(-)
+
+diff --git a/idli/Include/ImageScanner.h b/idli/Include/ImageScanner.h
+index bda8433..2ac3091 100644
+--- a/idli/Include/ImageScanner.h
++++ b/idli/Include/ImageScanner.h
+@@ -40,20 +40,27 @@ namespace zbar {
+ class ImageScanner {
+ public:
+     /// constructor.
+-    ImageScanner (zbar_image_scanner_t *scanner = NULL)
++	// You should document when, as here, there is an implicit ownership transfer to the object
++    // But this is usually a bad idea - see below.
++	ImageScanner (zbar_image_scanner_t *scanner = NULL)
+     {
+         if(scanner)
+             _scanner = scanner;
+         else
+             _scanner = zbar_image_scanner_create();
+     }
+-
++	// Here's the problem. If you run constructor (with a nonnull argument), the net effect is to 
++	// destroy the object. Because a caller might not be able to tell whether the constructor 
++	// actually got called, using this as a field for a larger object is likely to lead to a memory leak.
+     ~ImageScanner ()
+     {
+         zbar_image_scanner_destroy(_scanner);
+     }
+ 
+     /// cast to C image_scanner object
++	// this is not the usual semantics of type conversion. Type conversion usually returns a new
++	// object, or at least a pointer to const. Even though this method is marked const, it can be
++	// used to change the state of this.
+     operator zbar_image_scanner_t* () const
+     {
+         return(_scanner);
+@@ -120,7 +127,8 @@ public:
+         scan(image);
+         return(*this);
+     }
+-
++	// put these declarations before the class methods; it should be a goal that a reader
++	// can read your code (at least within a single file) from top to bottom
+ private:
+     zbar_image_scanner_t *_scanner;
+ };
+diff --git a/idli/Include/database.h b/idli/Include/database.h
+index a2b77b6..20e19dc 100644
+--- a/idli/Include/database.h
++++ b/idli/Include/database.h
+@@ -3,6 +3,8 @@
+ #include <itemInfo.h>
+ #include <map>
+ using  std::map;
++
++// why isn't this just a map? the methods seem to just be ordinary map methods
+ class database
+ {
+ public:
+diff --git a/idli/Include/databaseImplement.h b/idli/Include/databaseImplement.h
+index 3fde015..9df140f 100644
+--- a/idli/Include/databaseImplement.h
++++ b/idli/Include/databaseImplement.h
+@@ -1,5 +1,5 @@
+ #ifndef DATABASEIMPLEMENT_H_
+ #define DATABASEIMPLEMENT_H_
+-
++// use #pragma once in preference to conditional inclusion
+ #include <database.h>
+ #endif /* DATABASEIMPLEMENT_H_ */
+diff --git a/idli/Include/itemInfo.h b/idli/Include/itemInfo.h
+index 3f44514..d80343f 100644
+--- a/idli/Include/itemInfo.h
++++ b/idli/Include/itemInfo.h
+@@ -3,10 +3,11 @@
+ 
+ #include<iostream>
+ using  namespace std;
+-
++// documentation?
+ class itemInfo
+ {
+ public:
++	// do you mean for these to be public? why would a client bother with the methods below?
+     string barcode;
+ 	string name;
+ 	float weight;
+diff --git a/idli/Include/objectHaarParams.h b/idli/Include/objectHaarParams.h
+index c64400b..6a6d5d9 100644
+--- a/idli/Include/objectHaarParams.h
++++ b/idli/Include/objectHaarParams.h
+@@ -15,13 +15,15 @@
+  *      Author: Krithika
+  */
+ 
++// these types should not be in the header file; they are not needed to define the types in this file,
++// or by clients.
+ #include <objectList.h>
+ #include <cv.h>
+ #include <highgui.h>
+ #include <stdio.h>
+ #include "opencv2\opencv.hpp"
+ using namespace cv;
+-
++// usually a bad idea to import the entire std namespace
+ using namespace std;
+ #include <iostream>
+ #include <string.h>
+diff --git a/idli/Include/objectList.h b/idli/Include/objectList.h
+index 57cc6b8..4267a10 100644
+--- a/idli/Include/objectList.h
++++ b/idli/Include/objectList.h
+@@ -9,8 +9,10 @@ using namespace std;
+ #include <iostream>
+ #include <string.h>
+ 
++// yucch
+ class objectList{
+ public:
++		// why is this not static?
+ 	const vector <string >typeList = {"milk","coke","salt", "apple"};
+ 	vector <string >xmlList = {"./milk.xml","./coke.xml","./salt.xml", "./apple.xml"};
+ };
+diff --git a/idli/Include/rfid_detector.h b/idli/Include/rfid_detector.h
+index 5afb8b9..b2c2a35 100644
+--- a/idli/Include/rfid_detector.h
++++ b/idli/Include/rfid_detector.h
+@@ -1,6 +1,8 @@
+ #include <iostream>
+ #include <libusb.h>
+ using namespace std;
++// don't use #define in C++ without good reason
++// these don't make sense
+ #define vendor_ID;
+ #define product_ID;
+ #define end_point;
+diff --git a/idli/Include/scanBarcode.h b/idli/Include/scanBarcode.h
+index 3dde105..06d863e 100644
+--- a/idli/Include/scanBarcode.h
++++ b/idli/Include/scanBarcode.h
+@@ -1,6 +1,6 @@
+ #ifndef SCANBARCODE_H_
+ #define SCANBARCODE_H_
+-
++// instead of this, how about a barcode type with a constructor from string?
+ string scanBarcode(string location);
+ 
+ 
+-- 
+1.8.4.msysgit.0
+

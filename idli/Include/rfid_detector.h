@@ -1,9 +1,10 @@
 #include <iostream>
 #include <libusb.h>
-using namespace std;
 #define vendor_ID;
 #define product_ID;
 #define end_point;
+
+using namespace std;
 
 class rfid_detector
 {

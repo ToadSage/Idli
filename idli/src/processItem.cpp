@@ -21,7 +21,8 @@ void itemInfo::Timerupdate()
 void itemInfo:: getrfid()
 {
 	cout<<"Enter rfid"<<endl;
-	cin>>rfid;
+	//cin>>rfid;
+	rfid=rfid();
 }
 void itemInfo::objectdetect (string fileLocate)
 {

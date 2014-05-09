@@ -6,7 +6,7 @@ using  std::map;
 class database
 {
 public:
-    /* data structure to store the details of the item */
+    /* Data structure to store the details of the item. */
     map <string, itemInfo> myMap;
     void add(itemInfo);
     void find(int);

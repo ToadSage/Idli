@@ -1,7 +1,7 @@
 #include <databaseImplement.h>
 
 using namespace std;
-
+// don't bake io into your classes
 void database:: add(itemInfo grocery)
 {
 	ofstream myFile;
@@ -42,8 +42,12 @@ void database:: add(itemInfo grocery)
 	cout << "Data successfully added!" <<endl;
 }
 
+// a functiopn called find usually would be const
+// the name should indicate the effect of the update
 void database :: find(string rfid)
 {
+	// move deckaration into the loop
+	// good place to use auto instead of the explicit type
 	map<string, itemInfo> :: iterator it;
 	for (it=myMap.begin(); it!=myMap.end(); ++it)
 	{

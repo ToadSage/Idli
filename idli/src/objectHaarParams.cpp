@@ -1,5 +1,6 @@
 #include <ObjectHaarParams.h>
 
+// this looks like mockup code, not real code
 objectHaarParam::objectHaarParam ():
 scaleFactor{-1.1}, minNeighbors{4},
 flag{0}, minSize{Size(10,40)},

@@ -1,7 +1,8 @@
 #include <processItem.h>
 
 using namespace std;
-
+// why are these parameters strings, instead of things that computers use?
+// (this is an embedded programming class)
 void itemInfo::weightupdate(float wt)
 {
 	status="back in";

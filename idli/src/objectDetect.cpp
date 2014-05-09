@@ -9,7 +9,7 @@
 using namespace cv;
 using namespace std;
 
-
+// this should be in a class
 
 	int detectAndDisplay( string inputImage, bool cameraCapture ,string *itemName)
 	{
@@ -43,6 +43,7 @@ using namespace std;
 		//-- 3. Apply the classifier to the frame
 		if(!frame.empty())
 		{
+			// yucch. at least use a for loop. even better, use an iterator
 			while(count < l.typeList.size())
 			{
 				objectHaarParam item1(l.typeList[count]);

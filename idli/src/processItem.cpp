@@ -47,20 +47,13 @@ string itemInfo::getname()
 {
 	return name;
 }
-void itemInfo::getweight(float weight1)
+void itemInfo::getweight()
 {
-	if(weight1==0)
-	{
-		while(weight!=0)
+	while(weight!=0)
 		{
 			weight=rand()%5;
 		}
-	}
-	else
-	{
-		weight=rand()%weight1;
-	}
-	
+
 }
 
 void itemInfo::display()

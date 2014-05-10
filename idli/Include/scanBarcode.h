@@ -5,7 +5,7 @@
 #include <string.h>
 
 using std::string;
-class barcode{
+class scanBarcode{
 private:
 string code;
 public:

@@ -21,7 +21,7 @@ void itemInfo::Timerupdate()
 }
 void itemInfo:: getrfid()
 {
-	//rfid=rfid();
+	rfid=rfid();
 }
 void itemInfo::objectdetect (string fileLocate)
 {

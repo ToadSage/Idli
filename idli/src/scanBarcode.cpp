@@ -9,7 +9,7 @@ using namespace std;
 using namespace zbar;
 using namespace cv;
 
-string barcode::scanBarcode(string location){
+string scanBarcode::scanBarcode(string location){
 
 	/* Initialize the Scanner to scan barcodes. */
 	ImageScanner scanner;

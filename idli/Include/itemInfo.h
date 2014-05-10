@@ -17,7 +17,7 @@ public:
 	time_t Timer;
 	string rfid;
 	objectList objList;
-	barcode objBarcode;
+	scanBarcode objBarcode;
 
 	 void weightupdate(float);
 	 void statusupdate();

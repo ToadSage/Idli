@@ -47,10 +47,20 @@ string itemInfo::getname()
 {
 	return name;
 }
-void itemInfo::getweight()
+void itemInfo::getweight(float weight1)
 {
-	cout<<"enter the weight"<<endl;
-	cin>>weight;
+	if(weight1==0)
+	{
+		while(weight!=0)
+		{
+			weight=rand()%5;
+		}
+	}
+	else
+	{
+		weight=rand()%weight1;
+	}
+	
 }
 
 void itemInfo::display()

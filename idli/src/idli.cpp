@@ -3,7 +3,8 @@
 
 using namespace std;
 
-int main(int argc, const char** argv ) {
+int main(int argc, const char** argv ) 
+{
 	database data;
 	itemInfo item ;
 	unsigned int choice, rfout,temp_weight;
@@ -37,9 +38,8 @@ int main(int argc, const char** argv ) {
 		case 3:
 			cout<<"which Grocery do u want to put in"<<endl;
 			cin>>rfout;
-			cout<<"what is the weight now"<<endl;
-			cin>>temp_weight;
-			data.update(rfout,temp_weight);
+			data.update(rfout,data.updatedweight(rfout));
+			cout<<"The weight of "<< rfout << "is now" << data.updatedweight(rfout); 
 			break;
 		case 4:
 				map<string, itemInfo> :: iterator it;

@@ -13,6 +13,6 @@ libusb_device_handle *device_handle; //a device handle
 libusb_context *USB_session = NULL; //a libusb session
 unsigned char *data = new unsigned char[10]; //data to be read, and the size of the buffer into which the data is read
 
-string rfid();
+string rfid() const;
 
 }

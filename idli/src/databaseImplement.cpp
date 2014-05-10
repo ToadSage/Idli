@@ -72,4 +72,19 @@ void database :: update(string rfid, float weight)
     
 }
 
+float database :: updatedweight(string rfid)
+{
+	float newWeight;
+	map<string, itemInfo> :: iterator it;
+	for (it=myMap.begin(); it!=myMap.end(); ++it)
+	{
+		if(it->second.rfid==rfid)
+		{
+			newWeight=rand()%(it->second.weight);
+			return newWeight;	
+		}	
+	}
+	
+}
+
 

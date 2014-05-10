@@ -11,8 +11,9 @@ public:
     /* Data structure to store the details of the item. */
     map <string, itemInfo> myMap;
     void add(itemInfo);
-    void find(int);
-    void update(int,float);
+    void find(string);
+    void update(strung,float);
+    float updatedweight(string);
 };
 
 

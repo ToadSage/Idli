@@ -2,6 +2,8 @@
 #include <libusb.h>
 // don't use #define in C++ without good reason
 // these don't make sense
+// don't use #define in C++ without good reason
+// these don't make sense
 #define vendor_ID;
 #define product_ID;
 #define end_point;

@@ -11,13 +11,17 @@ void database:: add(itemInfo grocery)
     
     for (it=myMap.begin(); it!=myMap.end(); ++it)
     {
+		// traverses through the map, if there is a conflict, depending on the users choice deletion  of conflicting id or insertion of new id will be done
         if(it->second.rfid==grocery.rfid)
         {
-            cout<<"This RFID already exists in your database. Do u want to remove " << it->second.getname() <<" from the list." << endl << "(Y OR N)";
+            cout<<"This RFID already exists in your database. Do you want to remove " << it->second.getname() <<" from the list." << endl << "(Y OR N)";
             cin>>choice;
             
             switch(choice)
             {
+				// whenever there is a conflict (same rfid is being logged in ) depending on users 
+				//choice the old one will be removed and mapped to the new object
+				//or a new rfid is obtained to map
 				case 'Y':
 					it->second.Timerupdate();
 					myMap.erase(it);

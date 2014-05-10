@@ -13,7 +13,8 @@ int main(int argc, const char** argv ) {
 
 	do
 	{
-		(invariant 0<=choice<=5)
+		//_(INVARIANT loop iff choice!=0)
+		//_(INVARIANT myMap is unmodified)
 		cin>>choice;
 		switch(choice)
 		{
@@ -43,7 +44,10 @@ int main(int argc, const char** argv ) {
 		case 4:
 				map<string, itemInfo> :: iterator it;
 			for (it=data.myMap.begin(); it!=data.myMap.end(); ++it)
+			{
+				//_(INVARIANT <=it
 				it->second.display();
+			}
 			break;
 
 		default:

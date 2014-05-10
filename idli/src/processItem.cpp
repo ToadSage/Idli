@@ -21,8 +21,6 @@ void itemInfo::Timerupdate()
 }
 void itemInfo:: getrfid()
 {
-	cout<<"Enter rfid"<<endl;
-	//cin>>rfid;
 	rfid=rfid();
 }
 void itemInfo::objectdetect (string fileLocate)
@@ -30,7 +28,7 @@ void itemInfo::objectdetect (string fileLocate)
 	int val = detectAndDisplay(fileLocate,0,&name);
 	if(val == -1)
 	{
-		cout<<"Couldnt perform object detection"<<endl;
+		cout<<"Could not perform object detection"<<endl;
 	}
 }
 void itemInfo::getbarcode()

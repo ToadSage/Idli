@@ -13,11 +13,13 @@ int main(int argc, const char** argv ) {
 
 	do
 	{
+		(invariant 0<=choice<=5)
 		cin>>choice;
 		switch(choice)
 		{
 		case 0:
-			break;
+			cout << "program terminated" << endl;
+			return 0;
 		case 1:
 			cout<<"Enter details:"<<endl;
 			item.getbarcode();
@@ -49,6 +51,4 @@ int main(int argc, const char** argv ) {
 			cout<<"Enter \n1 to add new item\n2 to remove item\n3 to return the item\n4 to display contents recorded\n0 to exit"<<endl;
 		}
 	}while(choice);
-cout << "program terminated" << endl;
-	return 0;
 }

@@ -10,9 +10,16 @@ using namespace cv;
 
 using std::cout;
 using std::string;
+using std::endl;
 
 
 // this should be in a class
+static  vector <string> objectList::typeList = {"milk","coke","salt", "apple"};
+static  vector <string> objectList::xmlList  =  {"./milk.xml","./coke.xml","./salt.xml", "./apple.xml"};
+
+
+
+
 
 int objectList :: detectAndDisplay( string inputImage, bool cameraCapture ,string *itemName)
 {

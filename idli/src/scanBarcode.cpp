@@ -9,7 +9,7 @@ using namespace std;
 using namespace zbar;
 using namespace cv;
 
-string scanBarcode::scanBarcode(string location){
+scanBarcode::scanBarcode(string location){
 
 	/* Initialize the Scanner to scan barcodes. */
 	ImageScanner scanner;
@@ -50,5 +50,5 @@ string scanBarcode::scanBarcode(string location){
 	else
 		cout << "No image found!\n" << endl;
 
-	return code;
+//	return code;
 }

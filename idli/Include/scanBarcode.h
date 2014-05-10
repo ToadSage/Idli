@@ -6,11 +6,9 @@
 
 using std::string;
 class scanBarcode{
-private:
-string code;
 public:
-string scanBarcode(string location);
-
+	string code;
+scanBarcode(string location);
 };
 
 

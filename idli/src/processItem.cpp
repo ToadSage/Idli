@@ -25,7 +25,8 @@ void itemInfo:: getrfid()
 }
 void itemInfo::objectdetect (string fileLocate)
 {
-	int val = objectList.detectAndDisplay(fileLocate,0,&name);
+	objectList objList;
+	int val = objList.detectAndDisplay(fileLocate,0,&name);
 	if(val == -1)
 	{
 		cout<<"Could not perform object detection"<<endl;
@@ -36,7 +37,8 @@ void itemInfo::getbarcode()
 	string fileLocate;
 	cout << "input image" << endl;
 	cin>>fileLocate;
-	barcode = objBarcode.scanBarcode(fileLocate);
+	scanBarcode objBarcode(fileLocate);
+	barcode = objBarcode.code;
 	if(!barcode.length()){
 		objectdetect(fileLocate);
 	}

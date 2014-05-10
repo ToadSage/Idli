@@ -11,11 +11,10 @@ using std::vector;
 class objectList{
 public:
 		// why is this not static?
-	static  vector <string >typeList = {"milk","coke","salt", "apple"};
-	static  vector <string >xmlList =  {"./milk.xml","./coke.xml","./salt.xml", "./apple.xml"};
+	static  vector <string >typeList;
+	static  vector <string >xmlList;
 	int detectAndDisplay( string inputImage, bool cameraCapture ,string *itemName);
 };
-
 
 
 

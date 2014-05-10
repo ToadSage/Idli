@@ -1,12 +1,8 @@
 #include <iostream>
 #include <libusb.h>
-// don't use #define in C++ without good reason
-// these don't make sense
-// don't use #define in C++ without good reason
-// these don't make sense
-#define vendor_ID;
-#define product_ID;
-#define end_point;
+#define vendor_ID 0x04D8
+#define product_ID 0x003F
+#define end_point 2
 
 using namespace std;
 

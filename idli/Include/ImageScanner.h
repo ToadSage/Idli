@@ -40,20 +40,27 @@ namespace zbar {
 class ImageScanner {
 public:
     /// constructor.
-    ImageScanner (zbar_image_scanner_t *scanner = NULL)
+	// You should document when, as here, there is an implicit ownership transfer to the object
+    // But this is usually a bad idea - see below.
+	ImageScanner (zbar_image_scanner_t *scanner = NULL)
     {
         if(scanner)
             _scanner = scanner;
         else
             _scanner = zbar_image_scanner_create();
     }
-
+	// Here's the problem. If you run constructor (with a nonnull argument), the net effect is to 
+	// destroy the object. Because a caller might not be able to tell whether the constructor 
+	// actually got called, using this as a field for a larger object is likely to lead to a memory leak.
     ~ImageScanner ()
     {
         zbar_image_scanner_destroy(_scanner);
     }
 
     /// cast to C image_scanner object
+	// this is not the usual semantics of type conversion. Type conversion usually returns a new
+	// object, or at least a pointer to const. Even though this method is marked const, it can be
+	// used to change the state of this.
     operator zbar_image_scanner_t* () const
     {
         return(_scanner);
@@ -120,7 +127,8 @@ public:
         scan(image);
         return(*this);
     }
-
+	// put these declarations before the class methods; it should be a goal that a reader
+	// can read your code (at least within a single file) from top to bottom
 private:
     zbar_image_scanner_t *_scanner;
 };

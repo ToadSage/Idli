@@ -3,10 +3,11 @@
 
 #include<iostream>
 using  namespace std;
-
+// documentation?
 class itemInfo
 {
 public:
+	// do you mean for these to be public? why would a client bother with the methods below?
     string barcode;
 	string name;
 	float weight;

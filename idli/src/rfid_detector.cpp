@@ -1,12 +1,7 @@
-#include <rfid_detector.h>
-#include <iostream>
-#include <libusb.h>
-using namespace std;
-#define vendor_ID;
-#define product_ID;
-#define end_point;
+#include rfid_detector.h
 
-rfid_detector :: string rfid() 
+
+string rfid_detector :: rfid() const
 {
 int r;	 //for return values
 ssize_t cnt; //holding number of devices in list

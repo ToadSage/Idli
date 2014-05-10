@@ -1,20 +1,19 @@
 #ifndef OBJECTLIST_H_
 #define OBJECTLIST_H_
 
-#pragma once
-#include <cv.h>
-#include <highgui.h>
-#include <stdio.h>
-using namespace std;
 #include <iostream>
 #include <string.h>
+#include <vector>
 
+using std::string;
+using std::vector;
 // yucch
 class objectList{
 public:
 		// why is this not static?
-	const vector <string >typeList = {"milk","coke","salt", "apple"};
-	vector <string >xmlList = {"./milk.xml","./coke.xml","./salt.xml", "./apple.xml"};
+	static  vector <string >typeList = {"milk","coke","salt", "apple"};
+	static  vector <string >xmlList =  {"./milk.xml","./coke.xml","./salt.xml", "./apple.xml"};
+	int detectAndDisplay( string inputImage, bool cameraCapture ,string *itemName);
 };
 
 

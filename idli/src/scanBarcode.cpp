@@ -3,17 +3,17 @@
 #include "zbar.h"
 #include "cv.h"
 #include "highgui.h"
+#include <scanBarcode.h>
 
 using namespace std;
 using namespace zbar;
 using namespace cv;
 
-string scanBarcode(string location){
+string barcode::scanBarcode(string location){
 
-	/* Initialise the Scanner to scan barcodes. */
+	/* Initialize the Scanner to scan barcodes. */
 	ImageScanner scanner;
 	scanner.set_config(ZBAR_NONE, ZBAR_CFG_ENABLE, 1);
-	string RetString;
     
 	/* Load the image. */
 	Mat frame = imread(location,0);
@@ -37,7 +37,7 @@ string scanBarcode(string location){
         {
 			/* Extract the barcode */
 			Image::SymbolIterator symbol = image.symbol_begin();
-			RetString =  symbol->get_data();
+			code =  symbol->get_data();
             
             /* Clean up the image after it has been scanned. */
             image.set_data(NULL, 0);
@@ -50,5 +50,5 @@ string scanBarcode(string location){
 	else
 		cout << "No image found!\n" << endl;
 
-	return RetString;
+	return code;
 }

@@ -2,6 +2,8 @@
 #define ITEMINFO_H_
 
 #include<iostream>
+#include <objectList.h>
+#include <scanBarcode.h>
 using  namespace std;
 // documentation?
 class itemInfo
@@ -14,6 +16,8 @@ public:
 	string status;
 	time_t Timer;
 	string rfid;
+	objectList objList;
+	barcode objBarcode;
 
 	 void weightupdate(float);
 	 void statusupdate();

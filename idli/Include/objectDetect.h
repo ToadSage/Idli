@@ -1,3 +1,4 @@
+/*
 #ifndef OBJECTDETECT_H_
 #define OBJECTDETECT_H_
 
@@ -6,4 +7,5 @@
 #include <objectList.h>
 
 	int detectAndDisplay(string inputImage,bool cameraCapture,string *itemName);
-#endif /* OBJECTDETECT_H_ */
+#endif  OBJECTDETECT_H_
+*/
